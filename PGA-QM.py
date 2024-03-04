@@ -45,7 +45,7 @@ def circuit_selector(name,nb_qubit):
         name="ghzall"
     else:
         filename=f"{name}_indep_qiskit_{nb_qubit}"
-        qasmfile=f"../Benchmarks/MQTBench_all/{filename}.qasm"
+        qasmfile=f"./Benchmarks/{filename}.qasm"
         qc=QuantumCircuit().from_qasm_file(qasmfile)
         qr=qc.qregs[0]
     return qc,qr
