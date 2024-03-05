@@ -1,5 +1,7 @@
 # PGA-QM
 
+[WORK IN PROGRESS]
+
 In this repository, the Makefile is used to simplify the execution of PGA-GM.py.
 
 Using the command "make PGAi CIRCUIT=circuit SIZE=size", with i in {1, 2, 3}, circuit in {ghzall, dj, ghz} and size in {80, 120}, one can reproduce the experiment of [LINK TO PAPER TO ADD].
