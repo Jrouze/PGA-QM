@@ -55,32 +55,38 @@ parser.add_argument("-c", "--circuit", nargs=2, default=["ghzall", "80"], help="
 ##-------------------------------------------------------
 ##      Reading GA parameters
 ##------------------------------------------------------- 
-parser.add_argument("--num_gen", type=int, default=30, help="Number of generation")
-parser.add_argument("--num_mating", type=int, default=20, help="Number of mating at each generation")
-parser.add_argument("--pop", type=int, default=40, help="Size of the population")
-parser.add_argument("--parent_selec", type=str, default="random", help="Type of parent selection for mating", choices=["sss","rws","sus","rank","random","tournament"])
-parser.add_argument("--cross_type", type=str, default="two_points", help="Type of crossover", choices=["single_point","two_points","uniform","scattered"])
-parser.add_argument("--cross_prob", type=float, default=0.5, help="Probability of crossover between 0 and 1")
-parser.add_argument("--muta_type", type=str, default="random", help="Type of mutation", choices=["random","swap","inversion","scramble","adaptative"])
-parser.add_argument("--muta_prob", type=float, default=0.1, help="Probability of mutation between 0 and 1")
-parser.add_argument("--stop_crit", type=int, default=0, help="Specifies the stopping criteria. n<=0 means None, n>0 means saturate_n")
+parser.add_argument("--pga", type=int, default=1, help="PGA set of parameters", choices=[1,2,3])
+parser.add_argument("-s","--stop_crit", type=int, default=0, help="Specifies the stopping criteria. n<=0 means None, n>0 means saturate_n")
 
 args = parser.parse_args()
+num_pga = args.pga
 
-num_gen = args.num_gen
-num_mating = args.num_mating
-pop = args.pop
-parent_selec = args.parent_selec
-cross_type = args.cross_type
-cross_prob = args.cross_prob
-muta_type = args.muta_type
-muta_prob = args.muta_prob
+def pga_param_selec(num_pga):
+    if num_pga==3:
+        num_gen = 35
+        num_mating = 15
+        pop = 20
+    elif num_pga==2:
+        num_gen = 30
+        num_mating = 20
+        pop = 30
+    else:   ### Includes num_pga==1 or any other values (mistake)
+        num_gen = 30
+        num_mating = 20
+        pop = 40
+    return num_gen,num_mating,pop
+
+num_gen,num_mating,pop = pga_param_selec(num_pga)
+parent_selec = "random"
+cross_type = "two_points"
+cross_prob = 0.5
+muta_type = "random"
+muta_prob = 0.1
 
 if args.stop_crit<=0:
     stop_criteria=None
 else:
     stop_criteria=f"saturate_{args.stop_crit}"
-
 ##-------------------------------------------------------
 ##      Circuit & Backend selection
 ##-------------------------------------------------------
@@ -138,5 +144,3 @@ if stop_criteria:
     stop_crit_name=stop_criteria
 with open(f"bench_{name}_{nb_qubit}_{pop}_{num_mating}_{cross_type}_{stop_crit_name}.txt","a") as fout:
     fout.write(f"{name}_{nb_qubit} {-solution_fitness} {end - start} {ga_instance.generations_completed}\n")
-               
-          
