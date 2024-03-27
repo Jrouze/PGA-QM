@@ -2,12 +2,17 @@
 
 [WORK IN PROGRESS]
 
-This repository aims at providing all the necessary ressources and instructions to reproduce the results presented in [LINK TO PAPER TO ADD]
+## Description
+This repository aims at providing all the necessary ressources and instructions to reproduce the results presented in [LINK TO PAPER TO ADD]. It constains the following files and folders :
 
-###Installation instruction
+- PGA-QM.py provides an implement of how to use the parallel genetic algorithm (PGA) to map a quantum circuit to some hardware. Running it writes a "bench_..._.txt" file that can be used to study the performance of the algorithms
+- PGA-QM_Speedup.py provides the same code, but running it returns a "speedup_..._.txt" file that can be used to study the scalabity of the algorithm
+- Benchmarks is a folder containing all the circuits studied in the paper. They were taken from https://www.cda.cit.tum.de/mqtbench/.
 
-Using the command "make PGAi CIRCUIT=circuit SIZE=size", with i in {1, 2, 3}, circuit in {ghzall, dj, ghz} and size in {80, 120}, one can reproduce the experiment of . Similarly, the command "make PGAistop CIRCUIT=circuit SIZE=size" with i in {1, 2, 3} can be used to reproduce the remaining experiments.
+## Installation instruction
+The python codes provided in this repository rely on several python libraries, namely pygad and qiskit.
+They can be installed using pip : `pip install pygad` and `pip install qiskit==0.43.3`.
+Note that all codes have been implemented and tested using qiskit 0.43.3 only.  There is no guarentee that older or newer version would be compatible with this code. However, pygad's lastest version should work fine.
 
-Note that in order to function properly, the folder called "Benchmarks" should be placed in the same folder as PGA-QM.py, otherwise the path in line 48 of PGA-QM.py will need to be modified accordingly. The "Benchmarks" folder contains of the necessary files to reproduce the experiments (files taken from https://www.cda.cit.tum.de/mqtbench/).
-
-Important note : All codes have been implemented and tested using Qiskit 0.43.3. There is no guarentee that newer version would be compatible with this code.
+## How to use
+PGA-QM.py can be executed using `python3 PGA-QM.py -c CIRCUIT SIZE --pga PGA -s STOP` where CIRCUIT is the type of circuit to be used (ex : ghzall, ghz, dj, qft) and SIZE is the number of qubits of the circuit. Note
