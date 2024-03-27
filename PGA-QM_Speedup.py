@@ -57,7 +57,7 @@ parser.add_argument("-c", "--circuit", nargs=2, default=["ghzall", "80"], help="
 ##------------------------------------------------------- 
 parser.add_argument("--pga", type=int, default=1, help="PGA set of parameters", choices=[1,2,3])
 parser.add_argument("-s","--stop_crit", type=int, default=0, help="Specifies the stopping criteria. n<=0 means None, n>0 means saturate_n")
-parser.add_argument("-t","--nb_threads", type=int, default=30, help="Number of parallel threads")
+parser.add_argument("-t","--nb_threads", type=int, default=32, help="Number of parallel threads")
 
 
 args = parser.parse_args()
