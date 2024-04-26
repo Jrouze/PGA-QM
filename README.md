@@ -27,4 +27,4 @@ Example: `python3 PGA-QM.py -c ghzall 80 --pga 1 -s 0`
 
 - PGA-QM_Speedup.py can be executed using `python3 PGA-QM.py -c CIRCUIT SIZE --pga PGA -s STOP -t THREADS`. The arguments are the same as before, with the added THREADS being the number of parallel threads to use. By changing this value, one can study the scalability of the parallel genetic algorithm.
 
-Example: `python3 PGA-QM.py -c ghzall 80 --pga 1 -s 0 -t 32`
+Example: `python3 PGA-QM_Speedup.py -c ghzall 80 --pga 1 -s 0 -t 32`
