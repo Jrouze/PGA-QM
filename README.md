@@ -1,7 +1,5 @@
 # PGA-QM
 
-[WORK IN PROGRESS]
-
 ## Description
 This repository aims to provide all the necessary resources and instructions to reproduce the results presented in [LINK TO PAPER TO ADD]. It contains the following files and folders:
 
