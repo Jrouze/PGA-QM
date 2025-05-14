@@ -10,7 +10,7 @@ from qiskit import QuantumCircuit,transpile,ClassicalRegister
 from qiskit.transpiler import Layout
 from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
 import argparse
-parser = argparse.ArgumentParser(description="My Python Script")
+parser = argparse.ArgumentParser()
 
 ##-------------------------------------------------------
 ##      Fitness definition
